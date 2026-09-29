@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- ── Tab bar ── -->
+    <LinearLayout
+        android:id="@+id/tabBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="#2C2C2C">
+
+        <HorizontalScrollView
+            android:id="@+id/tabScroll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/tabContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/addCharacterButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:background="#444444"
+            android:padding="0dp" />
+    </LinearLayout>
+
+    <!-- ── Scrollable character sheet ── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Name + Lvl row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name:"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="8dp" />
+
+                <EditText
+                    android:id="@+id/nameInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+                <!-- Lvl section — compact version of body points -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lvl:"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/lvlMinusButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:text="&#8722;"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="0dp" />
+
+                <EditText
+                    android:id="@+id/lvlInput"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:hint="1"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp" />
+
+                <Button
+                    android:id="@+id/lvlPlusButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:text="&#43;"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="0dp" />
+            </LinearLayout>
+
+            <!-- Species + Money -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Species:"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp" />
+
+                <EditText
+                    android:id="@+id/speciesInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Money:"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp" />
+
+                <EditText
+                    android:id="@+id/moneyInput"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:inputType="numberDecimal"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Stats table -->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0,1,2,3"
+                android:layout_marginBottom="16dp">
+
+                <TableRow>
+                    <TextView android:text="Att"  android:textStyle="bold" android:padding="8dp" android:gravity="center" />
+                    <TextView android:text="Def"  android:textStyle="bold" android:padding="8dp" android:gravity="center" />
+                    <TextView android:text="Body" android:textStyle="bold" android:padding="8dp" android:gravity="center" />
+                    <TextView android:text="Mind" android:textStyle="bold" android:padding="8dp" android:gravity="center" />
+                </TableRow>
+
+                <TableRow>
+                    <EditText android:id="@+id/attInput"  android:inputType="text"   android:padding="8dp" android:gravity="center" />
+                    <EditText android:id="@+id/defInput"  android:inputType="text"   android:padding="8dp" android:gravity="center" />
+                    <EditText android:id="@+id/bodyInput" android:inputType="number" android:padding="8dp" android:gravity="center" />
+                    <EditText android:id="@+id/mindInput" android:inputType="number" android:padding="8dp" android:gravity="center" />
+                </TableRow>
+            </TableLayout>
+
+            <!-- Body Points -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Body Points:"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="12dp" />
+
+                <Button
+                    android:id="@+id/minusButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="&#8722;"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="0dp" />
+
+                <EditText
+                    android:id="@+id/bodyPointsInput"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/plusButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="&#43;"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="0dp" />
+            </LinearLayout>
+
+            <!-- ── Weapons | Items + Spells ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:minHeight="320dp">
+
+                <!-- WEAPONS (left) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="#F0F0F0"
+                    android:padding="8dp"
+                    android:layout_marginEnd="6dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="WEAPONS"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Scroll up button -->
+                    <Button
+                        android:id="@+id/weaponsScrollUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:text="▲"
+                        android:textSize="12sp"
+                        android:padding="0dp"
+                        android:layout_marginBottom="2dp" />
+
+                    <EditText
+                        android:id="@+id/weaponsInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"
+                        android:background="#FFFFFF"
+                        android:padding="6dp"
+                        android:scrollbars="vertical"
+                        android:fadeScrollbars="false"
+                        android:overScrollMode="always"
+                        android:textSize="12sp"
+                        android:textColor="#000000" />
+
+                    <!-- Scroll down button -->
+                    <Button
+                        android:id="@+id/weaponsScrollDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:text="▼"
+                        android:textSize="12sp"
+                        android:padding="0dp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <!-- ITEMS + SPELLS (right) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="#F0F0F0"
+                    android:padding="8dp"
+                    android:layout_marginStart="6dp">
+
+                    <!-- ITEMS -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ITEMS"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:layout_marginBottom="4dp" />
+
+                    <Button
+                        android:id="@+id/itemsScrollUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:text="▲"
+                        android:textSize="12sp"
+                        android:padding="0dp"
+                        android:layout_marginBottom="2dp" />
+
+                    <EditText
+                        android:id="@+id/itemsInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"
+                        android:background="#FFFFFF"
+                        android:padding="6dp"
+                        android:scrollbars="vertical"
+                        android:fadeScrollbars="false"
+                        android:overScrollMode="always"
+                        android:textSize="12sp"
+                        android:textColor="#000000"
+                        android:layout_marginBottom="2dp" />
+
+                    <Button
+                        android:id="@+id/itemsScrollDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:text="▼"
+                        android:textSize="12sp"
+                        android:padding="0dp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- SPELLS -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SPELLS"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:layout_marginBottom="4dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+
+                        <EditText
+                            android:id="@+id/spellEntryInput"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Add spell..."
+                            android:inputType="text"
+                            android:textSize="12sp"
+                            android:textColor="#000000"
+                            android:background="#FFFFFF"
+                            android:padding="4dp" />
+
+                        <Button
+                            android:id="@+id/addSpellButton"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:text="+"
+                            android:textSize="18sp"
+                            android:padding="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="4dp" />
+                    </LinearLayout>
+
+                    <!-- Scroll arrows + spell list -->
+                    <Button
+                        android:id="@+id/spellsScrollUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:text="▲"
+                        android:textSize="12sp"
+                        android:padding="0dp"
+                        android:layout_marginBottom="2dp" />
+
+                    <ScrollView
+                        android:id="@+id/spellScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:scrollbars="vertical"
+                        android:fadeScrollbars="false">
+
+                        <LinearLayout
+                            android:id="@+id/spellListContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="4dp" />
+                    </ScrollView>
+
+                    <Button
+                        android:id="@+id/spellsScrollDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:text="▼"
+                        android:textSize="12sp"
+                        android:padding="0dp"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Reset + Delete -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/resetButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Reset"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Delete"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- Keep screen on -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Keep screen on"
+                    android:textSize="14sp" />
+
+                <Switch
+                    android:id="@+id/keepScreenOnSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
